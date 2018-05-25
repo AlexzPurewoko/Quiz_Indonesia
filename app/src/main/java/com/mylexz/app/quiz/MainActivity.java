@@ -1,5 +1,6 @@
 package com.mylexz.app.quiz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private void animateAndForward(final ImageView objImage, final int[] images, final int indexStart, final boolean repeat) {
         Log.i(TAG, "inside animationForward at the top");
         int fadeInDuration = 1000; // animate duration
+        if (indexStart == images.length - 1)
+            fadeInDuration = fadeInDuration + 1000;
         int timeBetween = 3000;
         int fadeOutDuration = 1000;
 
@@ -85,7 +88,12 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "inside animationForward at the AnimationListener.onAnimationStart() in the else -> if(repeat) section");
                         animateAndForward(objImage, images, 0, repeat);
                     }
+
                     Toast.makeText(MainActivity.this, "Has reached the end of image to show", Toast.LENGTH_LONG).show();
+                    // start into quiz activity
+                    Intent intent = new Intent(MainActivity.this, QuizStartActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 }
             }
 
