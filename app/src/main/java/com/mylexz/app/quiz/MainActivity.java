@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.main_image_splash);
         int[] images = {
                 // lomba aplikasi kihajar
-                R.mipmap.ic_launcher,
+                R.drawable.image_splash1,
                 // wonderful indonesia
-                R.drawable.wondeful_indo
+                R.drawable.image_tutwuri
         };
         animateAndForward(imageView, images, 0, false);
     }
